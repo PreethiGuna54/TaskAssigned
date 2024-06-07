@@ -1,0 +1,18 @@
+Vlog about Http1.1 & Http2
+
+HTTP 1.1 -> 
+Multiplexing:
+Loads the resources one by one , so if any of the resources failed to be loaded, remaining resources will be blocked.
+Server push:
+Server only serves the content to the client device once client asks for it.
+Header Compression:
+ uses the header compression as small files get pushed up faster.
+
+
+HTTP 2 ->
+Multiplexing:
+ Uses single TCP connection to send multiple streams of data at once, so no resources will be blocked by any other resources.
+Server Push:
+ Server pushes the content before the client asks for it, also gives the message to client what to expect from the pushed contents 
+Header Compression:
+ Also uses advanced header compression(HPACK) to compress the HTTP messages, which eliminates the HTTP redundant information in HTTP header packets.

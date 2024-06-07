@@ -1,0 +1,14 @@
+OBJECTS:
+    1.Objects are the important data types in JS. Unlike primitive data types, object can hold n number of values in the KEY-VALUE form.
+    2.Objects are represented by Key which will be the String type and Value could be in any of the data types.
+    3.We can operate the properties of Object by using ObjName.PropertiesKey.
+    4.Objects can be created by giving KEY_VALUE pairs inside {}.
+    5.Javascript uses various way of data structure to represents the object. Most common way is HashTable representation.
+     This allows for fast access and manipulation.
+
+Structure of Object:
+    var obj={
+        name:"Preethi",
+        Age:29,
+        Place:"Coimbatore"
+    }
