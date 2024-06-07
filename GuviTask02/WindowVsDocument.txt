@@ -1,0 +1,9 @@
+WINDOW
+    1.Window is a global object in client side Javascript. It is supported by all browsers.
+    2.Window object is responsible for managing global variables, functions & Objects, providing method interactions
+     and managing properties related to frames,tabs or windows.
+    3.Window manages browser Interactions.
+
+DOCUMENT:
+    1.Document is a HTML document that appears in the browser window and serve as an interface for interacting with the WEB pages content.
+    2.Document acts as an interface for content manipulation.
