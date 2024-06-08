@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr =[1,2,3,4,5,6,7,9];
+    var arrNew=(arr)=>{
+    var arr1=[];
+    for(var i=0;i<arr.length;i++){
+        if(arr[i]%2!=0){
+            arr1.push(arr[i]);
+        }
+    }
+    return arr1;
+}
+console.log(arrNew(arr).join(" "))
+
+var str=["apple","orange","grapes","banana","plum"]
+var str1=(str)=>{
+    var str2=[];
+    for(var i=0; i<str.length;i++){
+   var a= str[i].charAt(0).toUpperCase()+str[i].substring(1,str[i].length);
+    str2.push(a)
+}
+return str2;
+};
+console.log(str1(str).join(" "))
+
+var findPrime=[10,11,19,121,69];
+var primeNumbers= (arrs)=>{
+    var res=[];
+    for(var i=0; i<arrs.length;i++){
+       var count =0;
+        for(var j=1; j<=arrs[i];j++){
+            if(arrs[i]%j == 0){
+                count ++;
+            }
+        }
+    if(count ==2){
+        res.push(arrs[i]);
+    }
+        
+    }
+    return res;
+}
+console.log("PrimeNumbers in an Array : "+primeNumbers(findPrime))
+
+
+var fndPalindrome =["MADAM","GOD","MOM","DAD","CAT"]
+var palindromeList=(fndPalindrome)=>{
+var res=[];
+    for(var i=0;i<fndPalindrome.length;i++){
+        var rev =fndPalindrome[i].split("").reverse().join("");
+        if(fndPalindrome[i]==rev){
+            res.push(fndPalindrome[i]);
+        }
+    }
+    return res;
+}
+console.log("Palindrome in an Array : "+ palindromeList(fndPalindrome).join(" "));
+
+var med1=[2,12,6,4,10,3,18];
+var med2=[3,12,6,15,18,9,17];
+var medianArr=(med1,med2)=>{
+    var res=[];
+    med1=med1.sort(function(x,y){return x-y});
+    console.log(med1)
+    med2=med2.sort(function(x,y){return x-y});
+    console.log(med2)
+    var midIndex=Math.floor(parseInt(med1.length)/2)
+    console.log("Middle Index"+ midIndex)
+    var median=0 
+    if(med1.length%2===0){
+        median= parseInt(med1[midIndex-1])+parseInt(med1[midIndex])/2
+        console.log("median "+median)
+        res.push(median);
+    }else{
+        median=med1[midIndex]
+        console.log("median "+median)
+        res.push(median);
+    }
+        
+    var mid=Math.floor(parseInt(med2.length)/2)
+    console.log(mid)    ;
+    var median1=0;
+    if(med2.length%2===0){
+    var median1= (med2[mid-1]+med2[mid])/2
+    console.log(median1)
+        res.push(median1);
+    }else{
+        median1=med2[mid]
+        res.push(median1);
+    }
+     return res;  
+
+    }
+console.log("Median of two arrays : "+medianArr(med1,med2).join(" "));
+
+
+    </script>
+</body>
+</html>

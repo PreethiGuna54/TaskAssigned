@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var jsonObj={
+            "FirstName":"Preethi",
+            "LastName":"Gunasekaran",
+            "DateofDBirth":"05-04-1994",
+            "Qualification":"BE",
+            "College":"Vel Tech High Tech",
+            "CGPA":7.3,
+            "Address":"North Street,Sundampatti,Pudukkottai"
+        }
+
+        for(var key in jsonObj){
+            console.log("Key:"+key+":"+"Value:"+jsonObj[key])
+        }
+
+        for(var i=0; i<jsonObj.length;i++){
+            console.log("JSONObj:"+jsonObj[i])
+        }
+
+       var arr=["Preethi","05-04-1994","Female"];
+       for(var elements of arr){
+        console.log(elements);
+       }
+       
+       arr.forEach(element => {
+        console.log(element);
+       });
+
+
+    </script>
+</body>
+</html>

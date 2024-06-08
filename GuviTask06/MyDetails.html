@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class MyDetails{
+            constructor(name,age,place,qualification,isMarried,isWorking,gender){
+                this.name=name,
+                this.age=age,
+                this.place=place,
+                this.qualification=qualification,
+                this.isMarried = isMarried,
+                this.isWorking = isWorking,
+                this.gender = gender
+                console.log("MyDetails object is created")
+            }
+
+            getDetails(){
+                console.log(name,this,name);
+                console.log(`My name is ${name} My age is ${age} and im located in ${place}. My qualification is ${qualification} with my working status as${isWorking}`)
+            }
+        }
+        let obj = new MyDetails("Preethi",28,"Coimbatore","BE",true,true,"Female");
+
+        let{name,age,place,qualification,isMarried,isWorking,gender}=obj;
+        
+        obj.getDetails();
+    </script>
+</body>
+</html>
