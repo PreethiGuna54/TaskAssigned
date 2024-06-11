@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var res =[];
+        var req=new XMLHttpRequest();
+        req.open("GET",'https://raw.githubusercontent.com/PugazharasanC/rest-api/main/countriesV3.1.json')
+        req.send();
+        console.log(req.response)
+        req.onload=function(){
+            //console.log(req.response)
+             res =JSON.parse(req.response);
+            console.log(res)
+    
+        //Countries having the region:Asia using filter method:
+            var arr= res.filter((elements)=>(elements.region=="Asia"))
+            console.log("Countries with region = Asia are listed below:")
+                for (var elements of arr) {
+                    console.log(elements.name.common)
+                }
+        //Countries having the region:Asia using filter method:
+            var arr1= res.filter((elements)=>(elements.population<200000))
+            console.log("Countries with population less than 2Lakhs are listed below:")
+                for (var elements of arr1) {
+                    console.log(elements.name.common)
+                }
+           
+        //Printing details Name,capital,flag
+            arr.forEach(element => {
+                console.log(`Name:${element.name.common},Capital:${element.capital},Flag:${element.flag}`)
+            });
+         
+        //Printing the Total Population:
+            let totalpopulation= arr.reduce((acc,element)=> acc+element.population,0);
+            console.log("TotalPopulation :"+totalpopulation) 
+        
+        //Pring the countries uses US dollar
+        for (var elements of res) {
+                    console.log(elements.currencies['USD'])
+                }
+            var arr2= res.filter((elements)=>(elements.currencies['USD']))
+            console.log("Countries using USD are listed below:")
+                for (var elements of arr2) {
+                    console.log(elements.name.common)
+                }
+        }
+
+    </script>
+    
+</body>
+</html>
