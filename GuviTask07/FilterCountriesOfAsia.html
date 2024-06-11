@@ -32,7 +32,7 @@
            
         //Printing details Name,capital,flag
             arr.forEach(element => {
-                console.log(`Name:${element.name.common},Capital:${element.capital},Flag:${element.flag}`)
+                console.log(`Name:${JSON.stringify(element.name)},Capital:${element.capital},Flag:${element.flag}`)
             });
          
         //Printing the Total Population:
@@ -40,9 +40,6 @@
             console.log("TotalPopulation :"+totalpopulation) 
         
         //Pring the countries uses US dollar
-        for (var elements of res) {
-                    console.log(elements.currencies['USD'])
-                }
             var arr2= res.filter((elements)=>(elements.currencies['USD']))
             console.log("Countries using USD are listed below:")
                 for (var elements of arr2) {

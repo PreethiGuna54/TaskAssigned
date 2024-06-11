@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var res =[];
+        var req=new XMLHttpRequest();
+        req.open("GET",'https://raw.githubusercontent.com/PugazharasanC/rest-api/main/countriesV3.1.json')
+        req.send();
+        console.log(req.response)
+        req.onload=function(){
+            //console.log(req.response)
+             res =JSON.parse(req.response);
+            console.log(res)
+    var arr =res;
+                for (var elements of arr) {
+                    console.log(elements.flags)
+                }
+                 for (var elements of arr) {
+                    console.log("Name : "+JSON.stringify(elements.name) +"\n"+
+                    " Region :"+elements.region+"\n"+
+                    " SubRegion : "+elements.subregion+" Population:"+elements.population)
+                }
+            }
+    </script>
+</body>
+</html>
