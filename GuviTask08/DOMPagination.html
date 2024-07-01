@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+    background: linear-gradient(hsl(194, 78%, 56%), #b2ed54);
+    color:indigo;
+    padding:10px;
+    padding-left: 20px;
+    
+}
+.container1{ 
+   margin-bottom: 10px;
+   width:500px;
+}
+.footer{
+  list-style: none;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  border:#06c6bf double; 
+  color:indigo; 
+}
+.pagination{
+  background-color: aqua;
+}
+.footerDivContainer{
+  display:flex;
+  justify-content: center;
+}
+</style>
+<body>
+    <script>
+        var req=new XMLHttpRequest();
+        req.open('GET','https://raw.githubusercontent.com/Rajavasanthan/jsondata/master/pagenation.json')
+        req.send();
+       let res=[];
+       var foo=0;
+        req.onload=function(){ 
+            res= JSON.parse(req.response);
+            console.log(res);
+            foo = res.length/10
+            console.log(foo);
+            footerList('');
+            dataLoad('footer_1')
+            
+        }
+
+        var begin=1;
+        var end=5;
+        
+      var divContainer=document.createElement('div'); 
+      // divContainer.innerHTML="Magizhini"
+      divContainer.classList="container"
+      document.body.append(divContainer);
+        function dataLoad(id){
+          divContainer.innerHTML="";
+       
+         console.log(document.getElementsByClassName('footer'))
+         var clsList =document.getElementsByClassName('footer');
+         for(var m=0; m<clsList.length;m++){
+          clsList[m].style.color='indigo'
+         }
+         
+         document.getElementById(id).style.color='#e60edf';
+          var userInput = id.split('_');
+          var k=0;
+          var fnId=parseInt(userInput[1]);
+          
+          if(id=='last'){
+            k=foo*10;
+          }else if(id=='first'){
+            k=10;
+          }else if(fnId==1){
+            k=10;
+          }else{
+            k=fnId*10;
+            console.log(fnId)
+          }
+         
+            var total = k+10;
+            console.log(total)
+            for(var i=k-10;i<k;i++)
+            {
+                var div01=document.createElement('div'); 
+                div01.classList="container1"
+                 
+                var label00=document.createElement('label');
+                label00.innerHTML="ID : ";
+              //  console.log(label01)
+                div01.appendChild(label00)
+                var text00=document.createElement('text');
+                text00.innerHTML=res[i].id+"<br>";
+              //  console.log(text01)
+              label00.appendChild(text00)
+
+                var label01=document.createElement('label');
+                label01.innerHTML="Name : ";
+              //  console.log(label01)
+                div01.appendChild(label01)
+                var text01=document.createElement('text');
+                text01.innerHTML=res[i].name+"<br>";
+              //  console.log(text01)
+              label01.appendChild(text01)
+
+              var label02=document.createElement('label');
+                label02.innerHTML="Email : ";
+              //  console.log(label01)
+                div01.appendChild(label02)
+                var text02=document.createElement('text');
+                text02.innerHTML=res[i].email+"<br>";
+              //  console.log(text01)
+              label02.appendChild(text02)
+               // div01.innerHTML=
+                divContainer.appendChild(div01)
+                console.log(div01);
+            }
+        }
+           
+           var footerParentDiv=document.createElement('div');
+           footerParentDiv.classList="footerDivContainer";
+           document.body.append(footerParentDiv);
+           
+         
+           function footerList(id){
+            footerParentDiv.innerHTML="";
+            begin=parseInt(begin);
+            end=parseInt(end)
+            foo=parseInt(foo)
+            console.log("index: "+ begin +""+ end);
+            
+          if(id=='next'){
+
+            if(end<=foo && begin<foo){
+              
+              begin= begin+1;
+              end=end+1;
+              console.log("NewIndex "+begin +""+ end);
+            }
+         }else if(id=='prev'){
+              if((begin-1) > 1){
+                begin=begin-1;
+              }else{
+                begin=1;
+              }
+              end=begin+4;
+              if(begin<foo && end>foo ){
+                end=parseInt(foo)+1;
+                begin=end-4;
+              }
+        }else if(id=='last'){
+          end=foo+1;
+          begin=end-4;
+        }else if(id=='first'){
+          begin=1;
+          end=begin+4
+        }
+            var dataLoadBegin=begin;
+
+            var footerDiv = "footerDivFirst";
+           footerDiv=document.createElement('div');
+           footerDiv.classList="footer";
+           footerDiv.innerHTML="<<";
+           footerDiv.setAttribute('id','first')
+           footerDiv.addEventListener('click',(event)=>{
+            footerList(event.target.id) 
+            dataLoad('first');
+           })
+           footerParentDiv.appendChild(footerDiv)
+
+            var footerDiv = "footerDivPrev";
+           footerDiv=document.createElement('div');
+           footerDiv.classList="footer";
+           footerDiv.innerHTML="<";
+           footerDiv.setAttribute('id','prev')
+           footerDiv.addEventListener('click',(event)=>{
+            footerList(event.target.id)
+           })
+           footerParentDiv.appendChild(footerDiv)
+            for(var j=begin;j<end;j++) {
+              var footerDiv = "footerDiv"+j;
+              footerDiv=document.createElement('li');
+              footerDiv.setAttribute('id',"footer_"+j)
+              footerDiv.classList='footer'
+              footerDiv.innerHTML=j;
+              footerDiv.addEventListener('click',function(event){
+              console.log(event)
+              //footerDiv.style.color="indigo";
+              dataLoad(event.target.id);
+              });
+              console.log(footerDiv)
+              footerParentDiv.appendChild(footerDiv)
+            }
+           
+            
+           var footerDiv = "footerDivNext";
+           footerDiv=document.createElement('div');
+           footerDiv.classList="footer";
+           footerDiv.setAttribute('id','next')
+           footerDiv.innerHTML=">";
+           footerDiv.addEventListener('click',(event)=>{
+            footerList(event.target.id);
+           });
+           footerParentDiv.appendChild(footerDiv)
+           var footerDiv = "footerDivlast";
+           footerDiv=document.createElement('div');
+           footerDiv.classList="footer";
+           footerDiv.innerHTML=">>";
+           footerDiv.setAttribute('id','last')
+           footerDiv.addEventListener('click',(event)=>{
+           // var foo_end= parseInt(foo)+1;
+            console.log()
+            footerList(event.target.id) 
+            dataLoad('last');
+            
+           })
+           footerParentDiv.appendChild(footerDiv)
+           dataLoad('footer_'+dataLoadBegin);
+           
+           }
+        
+    </script>
+</body>
+</html>
