@@ -38,9 +38,9 @@ async function getCountries(){
    // <p class="card-text p-0 mb-1"><small>${elements.name.common} capital is ${elements.capital}.
    // The area is ${elements.area} and population of this country is ${elements.population}.</small></p>
     async function getWeather(lat,lon){
-        var key ='121218e2f5a1829885974f02787a68e1'
-        console.log(lat,lon,key)
-        let data =await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=&appid=${key}`)
-        let res = await data.json();
-        console.log(res)
+       // var key ='121218e2f5a1829885974f02787a68e1'
+        console.log(lat,lon)
+       // let data =await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=&appid=${key}`)
+       // let res = await data.json();
+       // console.log(res)
     }
