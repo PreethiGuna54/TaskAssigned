@@ -1,0 +1,14 @@
+.App{
+    display: flex;
+    flex-wrap: wrap;
+   background-color: whitesmoke;
+  }
+ .header-class{
+    display:flex;
+ }
+ .todosclass{
+    flex-direction: row;
+ }
+ .statusclass{
+    padding-left: 80%;
+ }
